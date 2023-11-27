@@ -21,6 +21,8 @@ export default {
 @use "../style/partials/variables" as *;
 
 .card {
+    position: relative;
+
     .card-body {
         background-color: $bg-yellow;
         height: 120px;
@@ -29,5 +31,15 @@ export default {
             color: white;
         }
     }
+
+    img:hover {
+        cursor: zoom-in;
+        position: absolute;
+        z-index: 1;
+        width: 450px;
+        left: -50%;
+        top: -50%;
+    }
+
 }
 </style>

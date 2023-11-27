@@ -12,7 +12,7 @@ export default {
         this.store.cardList = resp.data.data
         this.store.loading = false
       })
-    }, 3000)
+    }, 2000)
 
   },
   data() {

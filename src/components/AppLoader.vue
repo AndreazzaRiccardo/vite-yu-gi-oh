@@ -40,7 +40,7 @@ export default {
     .load {
         background-color: rgb(48, 48, 48);
         height: 100%;
-        animation: add-width 3s linear infinite;
+        animation: add-width 2s linear infinite;
         width: 0;
     }
 }
