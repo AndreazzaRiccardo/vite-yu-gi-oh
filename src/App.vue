@@ -6,9 +6,14 @@ import AppSelect from "./components/AppSelect.vue"
 import AppCardList from "./components/AppCardList.vue"
 export default {
   created() {
-    axios.get("https://db.ygoprodeck.com/api/v7/cardinfo.php?num=20&offset=0").then((resp) => {
+    this.store.loading = true
+    setTimeout(() => {
+      axios.get("https://db.ygoprodeck.com/api/v7/cardinfo.php?num=20&offset=0").then((resp) => {
       this.store.cardList = resp.data.data
+      this.store.loading = false
     })
+    }, 3000)
+    
   },
   data() {
     return {

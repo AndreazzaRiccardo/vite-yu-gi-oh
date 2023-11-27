@@ -1,29 +1,34 @@
 <script>
-import AppCard from './AppCard.vue';
 import { store } from '../store';
+import AppLoader from './AppLoader.vue';
+import AppCard from './AppCard.vue';
 export default {
-components: {
-    AppCard
-},
-data() {
-    return {
-        store,
+    data() {
+        return {
+            store,
+        }
+    },
+    components: {
+        AppCard,
+        AppLoader,
     }
-}
 }
 </script>
 
 <template>
-<main>
-    <div class="container p-5">
-        <div class="total">Found {{ store.cardList.length }} cards</div>
-        <div class="row row-cols-5">
-           <div class="col g-4" v-for="card in store.cardList">
-            <AppCard :card="card"/>
-           </div>
+    <main>
+        <AppLoader v-if="store.loading"/>
+        <div class="container p-5" v-else>
+            <div>
+                <div class="total">Found {{ store.cardList.length }} cards</div>
+                <div class="row row-cols-5">
+                    <div class="col g-4" v-for="(card,i) in store.cardList" :key="i">
+                        <AppCard :card="card" />
+                    </div>
+                </div>
+            </div>
         </div>
-    </div>
-</main>
+    </main>
 </template>
 
 <style scoped lang="scss">
@@ -49,5 +54,6 @@ main {
             font-size: 1.3rem;
         }
     }
-}
-</style>
+
+    
+}</style>
