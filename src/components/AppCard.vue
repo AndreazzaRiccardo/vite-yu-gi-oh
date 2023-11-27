@@ -19,10 +19,11 @@ export default {
 <style scoped lang="scss">
 @use "../style/general.scss";
 @use "../style/partials/variables" as *;
+
 .card {
     .card-body {
         background-color: $bg-yellow;
-        height: 120px; 
+        height: 120px;
 
         h5 {
             color: white;

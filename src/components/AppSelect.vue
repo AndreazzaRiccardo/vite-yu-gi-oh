@@ -17,6 +17,7 @@ export default {
 <style scoped lang="scss">
 @use "../style/general.scss";
 @use "../style/partials/variables" as *;
+
 section {
     padding: 1rem;
     background-color: $bg-yellow;

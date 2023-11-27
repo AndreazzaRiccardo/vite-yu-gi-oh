@@ -9,11 +9,11 @@ export default {
     this.store.loading = true
     setTimeout(() => {
       axios.get("https://db.ygoprodeck.com/api/v7/cardinfo.php?num=20&offset=0").then((resp) => {
-      this.store.cardList = resp.data.data
-      this.store.loading = false
-    })
+        this.store.cardList = resp.data.data
+        this.store.loading = false
+      })
     }, 3000)
-    
+
   },
   data() {
     return {
@@ -29,9 +29,9 @@ export default {
 </script>
 
 <template>
-  <AppHeader/>
-  <AppSelect/>
-  <AppCardList/>
+  <AppHeader />
+  <AppSelect />
+  <AppCardList />
 </template>
 
 <style lang="scss">

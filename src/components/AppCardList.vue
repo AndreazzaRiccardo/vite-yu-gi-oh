@@ -17,12 +17,12 @@ export default {
 
 <template>
     <main>
-        <AppLoader v-if="store.loading"/>
+        <AppLoader v-if="store.loading" />
         <div class="container p-5" v-else>
             <div>
                 <div class="total">Found {{ store.cardList.length }} cards</div>
                 <div class="row row-cols-5">
-                    <div class="col g-4" v-for="(card,i) in store.cardList" :key="i">
+                    <div class="col g-4" v-for="(card, i) in store.cardList" :key="i">
                         <AppCard :card="card" />
                     </div>
                 </div>
@@ -37,6 +37,7 @@ export default {
 
 main {
     background-color: $bg-yellow;
+    min-height: 80vh;
 
     .container {
         background-color: white;
@@ -55,5 +56,6 @@ main {
         }
     }
 
-    
-}</style>
+
+}
+</style>

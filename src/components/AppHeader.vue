@@ -5,10 +5,10 @@ export default {
 </script>
 
 <template>
-<header>
-    <img src="../assets/img/Yugioh_anime_logo.webp" alt="">
-    <h1>Yu-Gi-Oh Api</h1>
-</header>
+    <header>
+        <img src="../assets/img/Yugioh_anime_logo.webp" alt="">
+        <h1>Yu-Gi-Oh Api</h1>
+    </header>
 </template>
 
 <style scoped lang="scss">
@@ -18,7 +18,7 @@ header {
     align-items: center;
     padding: .5rem 1.5rem;
     gap: 1rem;
-    
+
     h1 {
         font-size: 4rem;
     }
