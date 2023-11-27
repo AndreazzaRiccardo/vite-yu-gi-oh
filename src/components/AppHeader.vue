@@ -18,6 +18,7 @@ header {
     align-items: center;
     padding: .5rem 1.5rem;
     gap: 1rem;
+    border-bottom: 2px solid black;
 
     h1 {
         font-size: 4rem;
