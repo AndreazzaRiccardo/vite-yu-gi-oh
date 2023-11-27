@@ -36,4 +36,7 @@ export default {
 
 <style lang="scss">
 @use "./style/general.scss";
+body {
+    font-family: 'roboto', sans-serif;
+}
 </style>

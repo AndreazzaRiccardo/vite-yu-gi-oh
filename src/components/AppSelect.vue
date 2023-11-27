@@ -12,13 +12,13 @@ export default {
         nextPage() {
             this.indexCard += 20
             axios.get(`https://db.ygoprodeck.com/api/v7/cardinfo.php?num=20&offset=${this.indexCard}`).then((resp) => {
-                this.store.cardList = resp.data.data
+                this.store.cardList = resp.data.data;
             })
         },
         prewPage() {
             this.indexCard -= 20
             axios.get(`https://db.ygoprodeck.com/api/v7/cardinfo.php?num=20&offset=${this.indexCard}`).then((resp) => {
-                this.store.cardList = resp.data.data
+                this.store.cardList = resp.data.data;
             })
         }
     }
@@ -26,7 +26,7 @@ export default {
 </script>
 
 <template>
-    <section class="pt-5 pb-4">
+    <section class="pt-5 pb-4" v-if="store.loading === false">
         <div class="container">
             <select class="form-select fw-bolder" name="deck-list" id="decks">
                 <option value="alien">Alien</option>

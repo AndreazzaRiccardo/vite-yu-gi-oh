@@ -38,7 +38,7 @@ export default {
         z-index: 1;
         width: 450px;
         left: -50%;
-        top: -50%;
+        top: -150%;
     }
 
 }
