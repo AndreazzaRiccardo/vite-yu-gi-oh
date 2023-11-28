@@ -16,10 +16,13 @@ export default {
 <template>
     <section class="pt-5 pb-4" v-if="store.loading === false">
         <div class="container">
-            <select class="form-select fw-bolder" name="deck-list" id="decks">
+            <select v-model="store.searchText" @change="$emit('search')" class="form-select fw-bolder" name="deck-list"
+                id="decks">
                 <option value="alien">Alien</option>
+                <option value="ally of justice">Ally of Justice</option>
+                <option value="ancient gear">Ancient Gear</option>
             </select>
-            <AppButtonsPage/>
+            <AppButtonsPage />
         </div>
     </section>
 </template>

@@ -30,7 +30,7 @@ export default {
 
     .card-body {
         background-color: $bg-yellow;
-        height: 120px;
+        height: 150px;
 
         h5 {
             color: white;

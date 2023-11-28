@@ -23,19 +23,35 @@ export default {
     AppHeader,
     AppSelect,
     AppCardList
+  },
+  methods: {
+    searchCard() {
+      axios
+        .get("https://db.ygoprodeck.com/api/v7/cardinfo.php", {
+          params: {
+            num: 20,
+            archetype: this.store.searchText,
+            offset: 0,
+          }
+        })
+        .then((resp) => {
+          this.store.cardList = resp.data.data;
+        })
+    }
   }
 }
 </script>
 
 <template>
   <AppHeader />
-  <AppSelect />
+  <AppSelect @search="searchCard" />
   <AppCardList />
 </template>
 
 <style lang="scss">
 @use "./style/general.scss";
+
 body {
-    font-family: 'roboto', sans-serif;
+  font-family: 'roboto', sans-serif;
 }
 </style>

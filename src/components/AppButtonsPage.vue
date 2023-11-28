@@ -5,30 +5,29 @@ export default {
     data() {
         return {
             store,
-            indexCard: 0,
             select: ""
         }
     },
     methods: {
         nextPage() {
-            this.indexCard += 20
-            axios.get(`https://db.ygoprodeck.com/api/v7/cardinfo.php?num=20&offset=${this.indexCard}`).then((resp) => {
+            this.store.indexCard += 20
+            axios.get(`https://db.ygoprodeck.com/api/v7/cardinfo.php?num=20&offset=${this.store.indexCard}`).then((resp) => {
                 this.store.cardList = resp.data.data;
             })
         },
         prewPage() {
-            this.indexCard -= 20
-            axios.get(`https://db.ygoprodeck.com/api/v7/cardinfo.php?num=20&offset=${this.indexCard}`).then((resp) => {
+            this.store.indexCard -= 20
+            axios.get(`https://db.ygoprodeck.com/api/v7/cardinfo.php?num=20&offset=${this.store.indexCard}`).then((resp) => {
                 this.store.cardList = resp.data.data;
             })
         },
         selectPage() {
-            this.indexCard = this.select * 20
+            this.store.indexCard = this.select * 20
             axios
-                .get("https://db.ygoprodeck.com/api/v7/cardinfo.php" , {
+                .get("https://db.ygoprodeck.com/api/v7/cardinfo.php", {
                     params: {
                         num: 20,
-                        offset: this.indexCard
+                        offset: this.store.indexCard
                     }
                 })
                 .then((resp) => {
@@ -45,7 +44,7 @@ export default {
             <option v-for="(page, i) in 644" :value="`${i}`">{{ i }}</option>
         </select>
         <div class="buttons d-flex align-items-center">
-            <button class="btn btn-light ms-4" @click="prewPage" v-if="indexCard >= 20">BACK PAGE</button>
+            <button class="btn btn-light ms-4" @click="prewPage" v-if="store.indexCard >= 20">BACK PAGE</button>
             <button class="btn btn-light ms-4" @click="nextPage">NEXT PAGE</button>
         </div>
     </div>
@@ -59,9 +58,11 @@ export default {
     display: flex;
     align-items: center;
 }
+
 button {
     min-width: 150px;
 }
+
 select {
     min-width: 150px;
 }
