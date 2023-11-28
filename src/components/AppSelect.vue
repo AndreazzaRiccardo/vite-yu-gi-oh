@@ -1,15 +1,11 @@
 <script>
 import { store } from '../store';
-import AppButtonsPage from './AppButtonsPage.vue';
 export default {
     data() {
         return {
             store,
         }
     },
-    components: {
-        AppButtonsPage
-    }
 }
 </script>
 
@@ -18,11 +14,17 @@ export default {
         <div class="container">
             <select v-model="store.searchText" @change="$emit('search')" class="form-select fw-bolder" name="deck-list"
                 id="decks">
-                <option value="alien">Alien</option>
-                <option value="ally of justice">Ally of Justice</option>
-                <option value="ancient gear">Ancient Gear</option>
+                <option v-for="arche in store.archetypeArray" :value="`${arche}`">{{ arche.toLocaleUpperCase() }}</option>
             </select>
-            <AppButtonsPage />
+            <div class="ms_container">
+                <select class="form-select" @change="$emit('select-page')" name="select-page" id="page" v-model="store.select">
+                    <option v-for="(page, i) in 644" :value="`${i}`">{{ i }}</option>
+                </select>
+                <div class="buttons d-flex align-items-center">
+                    <button class="btn btn-light ms-4" @click="$emit('prewPage')" v-if="store.indexCard >= 20">BACK PAGE</button>
+                    <button class="btn btn-light ms-4" @click="$emit('nextPage')" v-if="store.indexCard < 12860">NEXT PAGE</button>
+                </div>
+            </div>
         </div>
     </section>
 </template>
@@ -42,6 +44,19 @@ section {
         display: flex;
         justify-content: space-between;
         align-items: center;
+
+        .ms_container {
+            display: flex;
+            align-items: center;
+        }
+
+        button {
+            min-width: 150px;
+        }
+
+        select {
+            min-width: 150px;
+        }
     }
 }
 </style>

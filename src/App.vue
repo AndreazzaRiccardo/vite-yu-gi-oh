@@ -25,18 +25,35 @@ export default {
     AppCardList
   },
   methods: {
-    searchCard() {
+    apiCall(num, offset, archetype) {
       axios
         .get("https://db.ygoprodeck.com/api/v7/cardinfo.php", {
           params: {
-            num: 20,
-            archetype: this.store.searchText,
-            offset: 0,
+            num: num,
+            archetype: archetype,
+            offset: offset,
           }
         })
         .then((resp) => {
           this.store.cardList = resp.data.data;
         })
+    },
+    searchCard() {
+      this.apiCall(100, 0 , this.store.searchText);
+    },
+    nextPage() {
+      this.store.select = "";
+      this.store.indexCard += 20;
+      this.apiCall(20, this.store.indexCard);
+    },
+    prewPage() {
+      this.store.select = "";
+      this.store.indexCard -= 20;
+      this.apiCall(20, this.store.indexCard);
+    },
+    selectPage() {
+      this.store.indexCard = this.store.select * 20;
+      this.apiCall(20, this.store.indexCard);
     }
   }
 }
@@ -44,7 +61,7 @@ export default {
 
 <template>
   <AppHeader />
-  <AppSelect @search="searchCard" />
+  <AppSelect @search="searchCard" @select-page="selectPage" @prewPage="prewPage" @nextPage="nextPage"/>
   <AppCardList />
 </template>
 
