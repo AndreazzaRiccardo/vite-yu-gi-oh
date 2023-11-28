@@ -12,7 +12,8 @@ export default {
 </script>
 
 <template>
-    <div class="card">
+    <div class="card border-5 rounded-3"
+        :class="{ 'border-danger': card.type.includes('Monster') }, { 'border-primary': card.type.includes('Card') }">
         <img :src="card.card_images[0].image_url" class="card-img-top" :alt="`Immagine di ${card.name}`">
         <div class="card-body">
             <h5 class="card-text text-center">{{ card.name.toUpperCase() }}</h5>
