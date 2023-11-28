@@ -13,7 +13,6 @@ export default {
         this.store.loading = false
       })
     }, 2000)
-
   },
   data() {
     return {

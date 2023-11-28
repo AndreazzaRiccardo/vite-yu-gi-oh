@@ -1,7 +1,5 @@
 <script>
-export default {
-
-}
+export default {}
 </script>
 
 <template>
@@ -26,46 +24,43 @@ export default {
     font-size: 3rem;
     padding: 2rem;
 
-}
-
-
-
-.loadbar {
-    // animation: rotation 5s linear infinite reverse;
-    height: 50px;
-    background-color: white;
-    width: 60%;
-    display: flex;
-
-    .load {
-        background-color: rgb(48, 48, 48);
-        height: 100%;
-        animation: add-width 2s linear infinite;
-        width: 0;
-    }
-}
-
-
-
-@keyframes add-width {
-    20% {
-        width: 20%;
-    }
-
-    40% {
-        width: 40%;
-    }
-
-    60% {
+    .loadbar {
+        // animation: rotation 5s linear infinite reverse;
+        height: 50px;
+        background-color: white;
         width: 60%;
-    }
+        display: flex;
+        border-radius: 10px;
 
-    80% {
-        width: 80%;
+        .load {
+            background-color: rgb(48, 48, 48);
+            height: 100%;
+            animation: add-width 2s linear infinite;
+            width: 0;
+            border-radius: 10px;
+        }
     }
+    
+    @keyframes add-width {
+        20% {
+            width: 20%;
+        }
 
-    100% {
-        width: 100%;
+        40% {
+            width: 40%;
+        }
+
+        60% {
+            width: 60%;
+        }
+
+        80% {
+            width: 80%;
+        }
+
+        100% {
+            width: 100%;
+        }
     }
 }
 </style>
