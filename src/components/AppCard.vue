@@ -27,7 +27,7 @@ export default {
 @use "../style/partials/variables" as *;
 
 .card {
-    position: relative;
+
 
     .card-body {
         background-color: $bg-yellow;
@@ -38,13 +38,17 @@ export default {
         }
     }
 
-    img:hover {
-        cursor: zoom-in;
-        position: absolute;
+    img {
+        transform: scale();
+        transition: all .3s ease-in-out;
         z-index: 1;
-        left: -50%;
-        top: -150%;
-        width: 450px;
+
+        &:hover {
+            cursor: zoom-in;
+            z-index: 2;
+            transform: scale(2);
+            transition: all .3s ease-in-out;
+        }
     }
 }
 </style>

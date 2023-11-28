@@ -14,10 +14,12 @@ export default {
         <div class="container">
             <select v-model="store.searchText" @change="$emit('search')" class="form-select fw-bolder" name="deck-list"
                 id="decks">
+                <option value="">Seleziona un Archetipo</option>
                 <option v-for="arche in store.archetypeArray" :value="`${arche}`">{{ arche.toLocaleUpperCase() }}</option>
             </select>
             <div class="ms_container">
                 <select class="form-select" @change="$emit('select-page')" name="select-page" id="page" v-model="store.select">
+                    <option value="">n. Page</option>
                     <option v-for="(page, i) in 644" :value="`${i}`">{{ i }}</option>
                 </select>
                 <div class="buttons d-flex align-items-center">
@@ -37,7 +39,7 @@ section {
     background-color: $bg-yellow;
 
     select {
-        max-width: 200px;
+        max-width: 300px;
     }
 
     .container {

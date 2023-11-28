@@ -39,6 +39,7 @@ export default {
         })
     },
     searchCard() {
+      this.store.indexCard = 0;
       this.apiCall(100, 0 , this.store.searchText);
     },
     nextPage() {
