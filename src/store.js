@@ -6,5 +6,4 @@ export const store = reactive({
     searchText: "",
     indexCard: 0,
     select: "",
-    archetypeArray: ["alien","ally of justice","ancient gear","exodia","dark magician","blue-eyes","harpie"]
 })

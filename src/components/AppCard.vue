@@ -39,7 +39,6 @@ export default {
     }
 
     img {
-        transform: scale();
         transition: all .3s ease-in-out;
         z-index: 1;
 

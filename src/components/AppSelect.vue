@@ -4,6 +4,7 @@ export default {
     data() {
         return {
             store,
+            archetypeArray: ["alien","ally of justice","ancient gear","exodia","dark magician","blue-eyes","harpie","baby"]
         }
     },
 }
@@ -14,8 +15,8 @@ export default {
         <div class="container">
             <select v-model="store.searchText" @change="$emit('search')" class="form-select fw-bolder" name="deck-list"
                 id="decks">
-                <option value="">Seleziona un Archetipo</option>
-                <option v-for="arche in store.archetypeArray" :value="`${arche}`">{{ arche.toLocaleUpperCase() }}</option>
+                <option value="" selected>Seleziona un Archetipo</option>
+                <option v-for="(arche, i) in archetypeArray" :key="i" :value="arche">{{ arche.toUpperCase() }}</option>
             </select>
             <div class="ms_container">
                 <select class="form-select" @change="$emit('select-page')" name="select-page" id="page" v-model="store.select">
@@ -23,8 +24,8 @@ export default {
                     <option v-for="(page, i) in 644" :value="`${i}`">{{ i }}</option>
                 </select>
                 <div class="buttons d-flex align-items-center">
-                    <button class="btn btn-light ms-4" @click="$emit('prewPage')" v-if="store.indexCard >= 20">BACK PAGE</button>
-                    <button class="btn btn-light ms-4" @click="$emit('nextPage')" v-if="store.indexCard < 12860">NEXT PAGE</button>
+                    <button class="btn btn-light ms-4" @click="$emit('prew-page')" v-if="store.indexCard >= 20">BACK PAGE</button>
+                    <button class="btn btn-light ms-4" @click="$emit('next-page')" v-if="store.indexCard < 12860">NEXT PAGE</button>
                 </div>
             </div>
         </div>

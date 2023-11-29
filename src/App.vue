@@ -16,7 +16,8 @@ export default {
   },
   data() {
     return {
-      store
+      store,
+      error: false
     }
   },
   components: {
@@ -25,22 +26,36 @@ export default {
     AppCardList
   },
   methods: {
-    apiCall(num, offset, archetype) {
+    apiCall(num, offset) {
+      this.error = false;
+      this.store.loading = true;
+      const params = {
+        num: num,
+        offset: offset,
+      }
+
+      if(this.store.searchText !== "") {
+        params.archetype = this.store.searchText;
+        params.num =100;
+      }
+
       axios
         .get("https://db.ygoprodeck.com/api/v7/cardinfo.php", {
-          params: {
-            num: num,
-            archetype: archetype,
-            offset: offset,
-          }
+          params,
         })
         .then((resp) => {
           this.store.cardList = resp.data.data;
         })
+        .catch((err) => {
+          this.error = true;
+        })
+        .finally(() => {
+          this.store.loading = false;
+        });
     },
     searchCard() {
       this.store.indexCard = 0;
-      this.apiCall(100, 0 , this.store.searchText);
+      this.apiCall(20, 0);
     },
     nextPage() {
       this.store.select = "";
@@ -62,8 +77,9 @@ export default {
 
 <template>
   <AppHeader />
-  <AppSelect @search="searchCard" @select-page="selectPage" @prewPage="prewPage" @nextPage="nextPage"/>
-  <AppCardList />
+  <AppSelect @search="searchCard" @select-page="selectPage" @prew-page="prewPage" @next-page="nextPage"/>
+  <h2 class="text-center mt-5" v-if="error">RICERCA NON VALIDA</h2>
+  <AppCardList v-else/>
 </template>
 
 <style lang="scss">
