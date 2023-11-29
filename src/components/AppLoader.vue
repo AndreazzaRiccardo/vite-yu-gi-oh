@@ -12,7 +12,6 @@ export default {}
 </template>
 
 <style scoped lang="scss">
-@use "../style/general.scss";
 @use "../style/partials/variables" as *;
 
 .loader {

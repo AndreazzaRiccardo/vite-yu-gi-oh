@@ -26,7 +26,7 @@ export default {
     AppCardList
   },
   methods: {
-    apiCall(num, offset) {
+    apiCall(num, offset, archetype) {
       this.error = false;
       this.store.loading = true;
       const params = {
@@ -34,11 +34,11 @@ export default {
         offset: offset,
       }
 
-      if(this.store.searchText !== "") {
+      if(archetype) {
+        params.num = 100;
         params.archetype = this.store.searchText;
-        params.num =100;
       }
-
+      
       axios
         .get("https://db.ygoprodeck.com/api/v7/cardinfo.php", {
           params,
@@ -55,7 +55,7 @@ export default {
     },
     searchCard() {
       this.store.indexCard = 0;
-      this.apiCall(20, 0);
+      this.apiCall(20, 0, this.store.searchText);
     },
     nextPage() {
       this.store.select = "";
